@@ -17,9 +17,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 
 export default function App() {
-  const br = useRef(new Animated.Value(0)).current;
-  const sc = useRef(new Animated.Value(1)).current;
-  const rt = useRef(new Animated.Value(0)).current;
+  const hg = useRef(new Animated.Value(93)).current;
+  const wd = useRef(new Animated.Value(66)).current;
+  const lef = useRef(new Animated.Value(0)).current;
+  const top = useRef(new Animated.Value(0)).current;
   const [isCrossed, setIsCrossed] = useState(false);
 
   const makeCircle = () => {
@@ -41,13 +42,27 @@ export default function App() {
     setIsCircle(false);
   };
 
-  const fullScreenDesc =()=>{
+  const fullScreenDesc = () => {
+    Animated.parallel([
+      // Animated.spring(hg, { toValue: 100, useNativeDriver: true }),
+      // Animated.spring(wd, { toValue: 100, useNativeDriver: true }),
+      Animated.spring(lef, { toValue: 0, useNativeDriver: true }),
+      Animated.spring(top, { toValue: 0, useNativeDriver: true }),
+    ]).start();
 
-  }
+    setIsCrossed(true);
+  };
 
-  const partialScreenDesc = ()=>{
+  const partialScreenDesc = () => {
+    Animated.parallel([
+      // Animated.spring(hg, { toValue: 93, useNativeDriver: true }),
+      // Animated.spring(wd, { toValue: 66, useNativeDriver: true }),
+      Animated.spring(lef, { toValue: 135, useNativeDriver: true }),
+      Animated.spring(top, { toValue: 60, useNativeDriver: true }),
+    ]).start();
 
-  }
+    setIsCrossed(false);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -74,15 +89,21 @@ export default function App() {
             <Entypo name="download" size={24} color="white" /> Downloads
           </Text>
         </View>
-        <Animated.View style={[styles.description]}>
-          <TouchableOpacity 
+        <Animated.View style={[styles.description, 
+          {
+            position: "absolute",
+            margin:lef,
+                        
+            }]}>
+          <TouchableOpacity
             onPress={isCrossed ? fullScreenDesc : partialScreenDesc}
-            >
-              {isCrossed ?<EvilIcons name="navicon" size={24} color="black" />:
-              <Entypo name="cross" size={24} color="black" /> }
-            
+          >
+            {isCrossed ? (
+              <EvilIcons name="navicon" size={24} color="black" />
+            ) : (
+              <Entypo name="cross" size={24} color="black" />
+            )}
           </TouchableOpacity>
-
 
           <Text>Download Content</Text>
           <Text>
@@ -108,8 +129,6 @@ export default function App() {
           },
         ]}
       ></Animated.View> */}
-
-      
     </SafeAreaView>
   );
 }
@@ -128,24 +147,22 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#A4BFEF",
     padding: 8,
-
+    borderRadius: 10,
   },
   description: {
     position: "absolute",
-    height: "90%",
-    width: "40%",
+    width: "105%",
+    height: "103%",
     backgroundColor: "white",
-    left: 135,
-    top:80,
-    borderRadius:10,
-    padding:10,
+    borderRadius: 10,
+    padding: 10,
   },
 
   profileImage: {
     width: 80,
     height: 80,
     borderRadius: 5,
-    marginTop: 25,
+    marginTop: 0,
   },
   square: {
     width: 100,
