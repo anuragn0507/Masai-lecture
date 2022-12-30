@@ -9,3 +9,17 @@ function myMainFunc(){
 
 var func = myMainFunc();
 func();
+
+
+function mynew(){
+    var name= "anurag Yadav";
+    return function sec(){
+        console.log(name);
+    }
+}
+
+var newFunc = mynew();
+newFunc();
+
+
+
