@@ -5,14 +5,17 @@ import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } f
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
-const BottomSheet = () => {
+const BottomSheetUI = () => {
   const translateY = useSharedValue(0);
   const prevPosition = useSharedValue({y:0});
 
+  // customised scroll to function for using withSpring animation
   const scrollTo = (number) => {
     'worklet';
     translateY.value = withSpring(number, {damping: 50});
   }
+
+
   const gesture = Gesture.Pan()
   .onStart(()=>{
     prevPosition.value = { y: translateY.value};
@@ -22,17 +25,17 @@ const BottomSheet = () => {
   })
   .onEnd(()=>{
     if(translateY.value > -SCREEN_HEIGHT/2){
-      //translateY.value = withSpring(-35, {damping: 50})
-      scrollTo(-35);
+      translateY.value = withSpring(-35, {damping: 50})
+    //   scrollTo(-35);
     }else if(translateY.value < -SCREEN_HEIGHT/3){
-      //translateY.value = withSpring(-SCREEN_HEIGHT, {damping: 50})
-      scrollTo(-SCREEN_HEIGHT);
+      translateY.value = withSpring(-SCREEN_HEIGHT, {damping: 50})
+    //   scrollTo(-SCREEN_HEIGHT);
     }
   })
 
   useEffect(()=>{
-    //translateY.value = withSpring(-35, {damping: 50})
-    scrollTo(-35);
+    translateY.value = withSpring(-35, {damping: 50})
+    // scrollTo(-35);
   },[])
   const btmSheetAnimStyle = useAnimatedStyle(()=> {
     return {
@@ -52,7 +55,7 @@ const BottomSheet = () => {
   )
 }
 
-export default BottomSheet;
+export default BottomSheetUI;
 
 const styles = StyleSheet.create({
     btmSheet : {
