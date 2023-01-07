@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "212075677028-ks2j9idv5p7rk10v48k17236tqk8ngok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anuragn0507.fcmApp",
+            "certificate_hash": "c1ab83df8488c031fd45ed6b62c36593c89a36ae"
+          }
+        },
+        {
           "client_id": "212075677028-ehegvbs7f5ft3abf1tbatfv3tp2thodk.apps.googleusercontent.com",
           "client_type": 3
         }

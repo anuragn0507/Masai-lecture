@@ -277,6 +277,11 @@ android {
 }
 
 dependencies {
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])    
+    // implementation "com.android.support:appcompatv7:${rootProject.ext.supportLibVersion}"    
+    implementation "com.facebook.react:react-native:+"   
+    
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.multidex:multidex:2.0.1'
 
@@ -284,6 +289,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation platform('com.google.firebase:firebase-analytics')
 
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";

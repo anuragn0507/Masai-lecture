@@ -10,11 +10,16 @@
   "dependencies": {
     "@react-native-firebase/app": "^16.5.0",
     "@react-native-firebase/messaging": "^16.5.0",
+    "@react-native-google-signin/google-signin": "^9.0.2",
     "expo": "~47.0.9",
     "expo-splash-screen": "~0.17.5",
+    "expo-sqlite": "~11.0.0",
     "expo-status-bar": "~1.4.2",
+    "link": "^1.5.1",
     "react": "18.1.0",
-    "react-native": "0.70.5"
+    "react-native": "^0.70.5",
+    "react-native-sqlite-storage": "^6.0.1",
+    "react-notifications-component": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
